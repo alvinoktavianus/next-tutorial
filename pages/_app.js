@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { wrapper } from '../app/store'
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)
