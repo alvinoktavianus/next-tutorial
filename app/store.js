@@ -2,9 +2,9 @@ import { configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 import createSagaMiddleware from 'redux-saga'
 
-import homeReducer from '../pages/home/slice'
+import homeReducer from '../slice/homeSlice'
 
-import homeSaga from '../pages/home/saga'
+import homeSaga from '../saga/homeSaga'
 
 const makeStore = () => {
   const sagaMiddleware = createSagaMiddleware()
