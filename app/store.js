@@ -22,7 +22,7 @@ const makeStore = () => {
     },
   })
 
-  store.sagaTask = sagaMiddleware.run(homeSaga)
+  store.homeSagaTask = sagaMiddleware.run(homeSaga)
 
   return store
 }

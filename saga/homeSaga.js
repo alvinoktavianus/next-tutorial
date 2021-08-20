@@ -3,7 +3,7 @@ import { pageRequest, setMovies } from '../slice/homeSlice'
 
 export function* pageRequestEffect() {
   console.log('home saga page request')
-  yield put(setMovies([]))
+  yield put(setMovies([{}, {}, {}, {}]))
 }
 
 export default function* homeSaga() {
