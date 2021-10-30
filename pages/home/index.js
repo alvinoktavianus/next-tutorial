@@ -5,15 +5,22 @@ import { pageRequest } from '../../slice/homeSlice'
 import { wrapper } from '../../app/store'
 import { useSelector } from 'react-redux'
 import { END } from 'redux-saga'
+import styled from 'styled-components'
+import { NextSeo } from 'next-seo'
+
+const Test = styled.div`
+  background-color: green;
+  height: 300px;
+  width: 300px;
+`
 
 function Home() {
   const { movies } = useSelector(state => state.home)
 
   return (
-    <MainPageWrapper
-      title={'Home'}
-      description={'Sample Project showing movies'}
-    >
+    <MainPageWrapper>
+      <NextSeo title='Home' description='Sample Project showing movies' />
+
       <header className='bg-dark py-5'>
         <Container className='px-4 px-lg-5 my-5'>
           <div className='text-center text-white'>
@@ -24,6 +31,8 @@ function Home() {
           </div>
         </Container>
       </header>
+
+      <Test />
     </MainPageWrapper>
   )
 }
