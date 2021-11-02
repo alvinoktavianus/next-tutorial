@@ -9,5 +9,6 @@ module.exports = {
         disableVendorPrefixes: process.env.NODE_ENV === 'production',
       },
     ],
+    ['babel-plugin-lodash'],
   ],
 }

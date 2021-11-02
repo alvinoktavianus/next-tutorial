@@ -38,12 +38,26 @@ function Home() {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  async ({ store, req, res }) => {
-    console.log(req)
-    store.dispatch(pageRequest())
-    store.dispatch(END)
-    await store.homeSagaTask.toPromise()
-  },
+  store =>
+    async ({ req, res }) => {
+      store.dispatch(pageRequest())
+      store.dispatch(END)
+
+      await store.homeSagaTask.toPromise()
+
+      console.log(store)
+
+      return {}
+    },
 )
+
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   async ({ store, req, res }) => {
+//     console.log(req)
+//     store.dispatch(pageRequest())
+//     store.dispatch(END)
+//     await store.homeSagaTask.toPromise()
+//   },
+// )
 
 export default Home

@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 import createSagaMiddleware from 'redux-saga'
+import logger from 'redux-logger'
 
 import homeReducer from '../slice/homeSlice'
 
@@ -12,10 +13,16 @@ const makeStore = () => {
   const store = configureStore({
     devTools: process.env.NODE_ENV !== 'production',
     middleware: getDefaultMiddleware => {
-      return getDefaultMiddleware({
+      const middleware = getDefaultMiddleware({
         thunk: false,
         serializableCheck: false,
       }).concat(sagaMiddleware)
+
+      if (process.env.NODE_ENV !== 'production') {
+        middleware.concat(logger)
+      }
+
+      return middleware
     },
     reducer: {
       home: homeReducer,
