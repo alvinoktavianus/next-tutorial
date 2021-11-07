@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { wrapper } from '../app/store'
+import { wrapper } from '~/app/store'
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />

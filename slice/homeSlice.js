@@ -1,5 +1,5 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
-import { createWrapper, HYDRATE } from 'next-redux-wrapper'
+import { HYDRATE } from 'next-redux-wrapper'
 
 const slice = createSlice({
   initialState: {
@@ -13,11 +13,7 @@ const slice = createSlice({
   name: 'home',
   extraReducers: {
     [HYDRATE]: (state, action) => {
-      console.log('HYDRATE', state, action.payload)
-      return {
-        ...state,
-        ...action.payload.subject,
-      }
+      state.movies = action.payload.home.movies
     },
   },
 })

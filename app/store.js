@@ -3,9 +3,9 @@ import { createWrapper } from 'next-redux-wrapper'
 import createSagaMiddleware from 'redux-saga'
 import logger from 'redux-logger'
 
-import homeReducer from '../slice/homeSlice'
+import homeReducer from '~/slice/homeSlice'
 
-import homeSaga from '../saga/homeSaga'
+import homeSaga from '~/saga/homeSaga'
 
 const makeStore = () => {
   const sagaMiddleware = createSagaMiddleware()
@@ -34,4 +34,6 @@ const makeStore = () => {
   return store
 }
 
-export const wrapper = createWrapper(makeStore)
+export const wrapper = createWrapper(makeStore, {
+  debug: process.env.NODE_ENV !== 'production',
+})

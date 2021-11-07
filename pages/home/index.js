@@ -1,18 +1,10 @@
 import React from 'react'
-import MainPageWrapper from '../../components/MainPageWrapper'
-import { Container } from 'react-bootstrap'
-import { pageRequest } from '../../slice/homeSlice'
-import { wrapper } from '../../app/store'
+import MainPageWrapper from '~/components/MainPageWrapper'
+import { Container, Card } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-import { END } from 'redux-saga'
-import styled from 'styled-components'
 import { NextSeo } from 'next-seo'
-
-const Test = styled.div`
-  background-color: green;
-  height: 300px;
-  width: 300px;
-`
+import _ from 'lodash'
+import { nanoid } from 'nanoid'
 
 function Home() {
   const { movies } = useSelector(state => state.home)
@@ -32,23 +24,21 @@ function Home() {
         </Container>
       </header>
 
-      <Test />
+      <section className='py-5'>
+        <div className='container px-4 px-lg-5 mt-5'>
+          <div className='row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center'>
+            {_.map(movies, (movie, idx) => {
+              return (
+                <div className='col mb-5'>
+                  <Card key={nanoid(8)}></Card>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
     </MainPageWrapper>
   )
 }
-
-export const getServerSideProps = wrapper.getServerSideProps(
-  store =>
-    async ({ req, res }) => {
-      store.dispatch(pageRequest())
-      store.dispatch(END)
-
-      await store.homeSagaTask.toPromise()
-
-      console.log(store)
-
-      return {}
-    },
-)
 
 export default Home

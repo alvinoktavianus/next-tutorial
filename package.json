@@ -16,6 +16,7 @@
     "formik": "^2.2.9",
     "lodash": "^4.17.21",
     "luxon": "^2.0.2",
+    "nanoid": "^3.1.30",
     "next": "12.0.3",
     "next-redux-wrapper": "^7.0.5",
     "next-seo": "^4.28.1",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-root-import": "^6.6.0",
     "babel-plugin-styled-components": "^1.13.3",
     "eslint": "8.2.0",
     "eslint-config-next": "12.0.3",
